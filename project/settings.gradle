@@ -1,2 +1,6 @@
 rootProject.name = 'project'
-include('shop-service')
+include(
+        'shop-service',
+        'auth-service',
+        'payment-service'
+)

@@ -1,0 +1,26 @@
+// plugins added by Spring Initializr for spring-boot app setup:
+plugins {
+    id 'org.springframework.boot' version '2.7.5'
+    id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+    id 'java'
+}
+
+group = 'project.ignythe'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+repositories {
+    // use Maven Central for resolving dependencies:
+    mavenCentral()
+}
+
+dependencies {
+    // dependencies provided by Spring Initializr for spring-boot app & tests setup:
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+// we need to access the task 'test' to configure JUnit:
+tasks.named('test') {
+    useJUnitPlatform()
+}
