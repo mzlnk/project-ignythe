@@ -1,0 +1,28 @@
+plugins {
+    // apply the application plugin to add support for building a CLI application in Java:
+    id 'application'
+}
+
+repositories {
+    // use Maven Central for resolving dependencies:
+    mavenCentral()
+}
+
+dependencies {
+    // use the internal library create as a gradle subproject:
+    implementation(project(":libraries:library-one"))
+
+    // use JUnit Jupiter for testing:
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
+}
+
+application {
+    // define the main class for the application:
+    mainClass = 'gradle.sandbox.app.one.AppOne'
+}
+
+// we need to access the task 'test' to configure JUnit:
+tasks.named('test') {
+    // Use JUnit Platform for unit tests:
+    useJUnitPlatform()
+}
