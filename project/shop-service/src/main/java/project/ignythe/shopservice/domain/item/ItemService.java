@@ -1,25 +1,39 @@
 package project.ignythe.shopservice.domain.item;
 
+import project.ignythe.shopservice.api.item.ItemCreateRequest;
+
 import java.util.List;
-import java.util.UUID;
 
 public class ItemService {
 
-    private final List<Item> items;
+    private final ItemRepository itemRepository;
 
-    public ItemService() {
-        this.items = initializeItems();
+    public ItemService(ItemRepository itemRepository) {
+        this.itemRepository = itemRepository;
     }
 
     public List<Item> list() {
-        return items;
+        return itemRepository.findAll();
     }
 
-    private List<Item> initializeItems() {
-        return List.of(
-                new Item(UUID.randomUUID(), "Apple", 10),
-                new Item(UUID.randomUUID(), "Orange", 20),
-                new Item(UUID.randomUUID(), "Pear", 35)
-        );
+    public Item getById(Long id) {
+        return itemRepository.findById(id)
+                .orElseThrow(() -> new ItemNotFoundException(id));
     }
+
+    public Item create(ItemCreateRequest createRequest) {
+        Item item = Item.builder()
+                .name(createRequest.name())
+                .description(createRequest.description())
+                .unitPrice(createRequest.unitPrice())
+                .unitType(createRequest.unitType())
+                .build();
+
+        return itemRepository.save(item);
+    }
+
+    public void deleteById(Long id) {
+        itemRepository.deleteById(id);
+    }
+
 }
