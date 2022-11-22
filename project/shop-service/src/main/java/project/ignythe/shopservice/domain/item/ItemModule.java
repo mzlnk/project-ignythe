@@ -7,8 +7,8 @@ import org.springframework.context.annotation.Configuration;
 public class ItemModule {
 
     @Bean
-    public ItemService itemService() {
-        return new ItemService();
+    public ItemService itemService(ItemRepository itemRepository) {
+        return new ItemService(itemRepository);
     }
 
 }
