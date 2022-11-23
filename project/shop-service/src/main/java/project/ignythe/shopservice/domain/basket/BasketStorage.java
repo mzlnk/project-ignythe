@@ -2,7 +2,6 @@ package project.ignythe.shopservice.domain.basket;
 
 import project.ignythe.shopservice.api.basket.BasketCreateRequest;
 import project.ignythe.shopservice.api.basket.BasketItemCreateRequest;
-import project.ignythe.shopservice.domain.item.ItemRepository;
 import project.ignythe.shopservice.domain.item.ItemService;
 
 public class BasketStorage {

@@ -3,6 +3,7 @@ package project.ignythe.shopservice.domain.basket;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -25,6 +26,7 @@ public class Basket {
     private String name;
 
     @OneToMany(mappedBy = "basket")
-    private Set<BasketItem> basketItems;
+    @Builder.Default
+    private Set<BasketItem> basketItems = new HashSet<>();
 
 }

@@ -6,13 +6,14 @@ import org.springframework.web.bind.annotation.*;
 import project.ignythe.shopservice.domain.item.Item;
 import project.ignythe.shopservice.domain.item.ItemService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
 @RequestMapping("/items")
 public class ItemController {
 
-    private ItemService itemService;
+    private final ItemService itemService;
 
     public ItemController(ItemService itemService) {
         this.itemService = itemService;
@@ -25,7 +26,7 @@ public class ItemController {
     }
 
     @PostMapping
-    public ResponseEntity<Item> create(@RequestBody ItemCreateRequest createRequest) {
+    public ResponseEntity<Item> create(@RequestBody @Valid ItemCreateRequest createRequest) {
         var createdItem = itemService.create(createRequest);
         return new ResponseEntity<>(createdItem, HttpStatus.CREATED);
     }
