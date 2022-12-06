@@ -2,18 +2,18 @@ package project.ignythe.shopservice.domain.basket;
 
 import project.ignythe.shopservice.api.basket.BasketCreateRequest;
 import project.ignythe.shopservice.api.basket.BasketItemCreateRequest;
-import project.ignythe.shopservice.domain.item.ItemService;
+import project.ignythe.shopservice.domain.item.ItemStorage;
 
 public class BasketStorage {
 
     private final BasketRepository basketRepository;
     private final BasketItemRepository basketItemRepository;
-    private final ItemService itemService;
+    private final ItemStorage itemStorage;
 
-    public BasketStorage(BasketRepository basketRepository, BasketItemRepository basketItemRepository, ItemService itemService) {
+    public BasketStorage(BasketRepository basketRepository, BasketItemRepository basketItemRepository, ItemStorage itemStorage) {
         this.basketRepository = basketRepository;
         this.basketItemRepository = basketItemRepository;
-        this.itemService = itemService;
+        this.itemStorage = itemStorage;
     }
 
     public Basket getById(Long id) {
@@ -29,7 +29,7 @@ public class BasketStorage {
     }
 
     public BasketItem createBasketItem(Long basketId, BasketItemCreateRequest createRequest) {
-        var item = itemService.getById(createRequest.itemId());
+        var item = itemStorage.getById(createRequest.itemId());
         var basket = getById(basketId);
 
         var basketItem = BasketItem.builder()

@@ -2,7 +2,7 @@ package project.ignythe.shopservice.domain.basket;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import project.ignythe.shopservice.domain.item.ItemService;
+import project.ignythe.shopservice.domain.item.ItemStorage;
 
 @Configuration
 public class BasketModule {
@@ -10,8 +10,8 @@ public class BasketModule {
     @Bean
     public BasketStorage basketStorage(BasketRepository basketRepository,
                                        BasketItemRepository basketItemRepository,
-                                       ItemService itemService) {
-        return new BasketStorage(basketRepository, basketItemRepository, itemService);
+                                       ItemStorage itemStorage) {
+        return new BasketStorage(basketRepository, basketItemRepository, itemStorage);
     }
 
 }

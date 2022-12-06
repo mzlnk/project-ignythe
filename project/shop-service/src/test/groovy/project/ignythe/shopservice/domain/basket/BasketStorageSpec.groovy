@@ -1,14 +1,14 @@
 package project.ignythe.shopservice.domain.basket
 
-import project.ignythe.shopservice.api.basket.BasketItemResponse
-import project.ignythe.shopservice.domain.item.ItemService
+
+import project.ignythe.shopservice.domain.item.ItemStorage
 import spock.lang.Specification
 
 class BasketStorageSpec extends Specification {
 
     private BasketRepository basketRepository = Mock()
     private BasketItemRepository basketItemRepository = Mock()
-    private ItemService itemService = Mock()
+    private ItemStorage itemService = Mock()
 
     private BasketStorage basketStorage = new BasketStorage(basketRepository, basketItemRepository, itemService)
 

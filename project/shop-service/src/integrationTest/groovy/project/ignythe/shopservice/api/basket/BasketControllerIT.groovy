@@ -10,10 +10,9 @@ import project.ignythe.shopservice.api.ApiTestConfiguration
 import project.ignythe.shopservice.domain.basket.Basket
 import project.ignythe.shopservice.domain.basket.BasketNotFoundException
 import project.ignythe.shopservice.domain.basket.BasketStorage
-import project.ignythe.shopservice.domain.item.ItemService
+import project.ignythe.shopservice.domain.item.ItemStorage
 import spock.lang.Specification
 
-import static org.mockito.Mockito.mock
 import static org.mockito.Mockito.when
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 
@@ -28,7 +27,7 @@ class BasketControllerIT extends Specification {
     BasketStorage basketStorage
 
     @MockBean
-    ItemService itemService
+    ItemStorage itemService
 
     private BasketControllerFixture fixture
 

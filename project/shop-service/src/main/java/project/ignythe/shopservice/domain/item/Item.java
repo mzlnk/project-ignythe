@@ -5,9 +5,11 @@ import lombok.*;
 import javax.persistence.*;
 import java.math.BigDecimal;
 
+import static lombok.AccessLevel.*;
+
 @Entity
 @Getter
-@Setter
+@Setter(PACKAGE)
 @Builder
 @Table(name = "ITEMS")
 @NoArgsConstructor
