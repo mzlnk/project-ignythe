@@ -2,7 +2,7 @@ package project.ignythe.shopservice.api.basket;
 
 import project.ignythe.shopservice.domain.basket.BasketItem;
 
-public class BasketItemMappper {
+public class BasketItemMapper {
 
     public BasketItemResponse toBasketItemResponse(BasketItem basketItem) {
         var item = basketItem.getItem();

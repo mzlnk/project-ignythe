@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Entity
 @Getter
-@Setter
+@Setter(AccessLevel.PACKAGE)
 @Builder
 @Table(name = "BASKET_ITEMS")
 @NoArgsConstructor

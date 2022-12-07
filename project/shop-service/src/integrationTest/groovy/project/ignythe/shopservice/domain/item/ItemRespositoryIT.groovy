@@ -23,8 +23,8 @@ class ItemRespositoryIT extends Specification {
         itemRepository.save(item)
 
         then:
-        def savedItem = em.find(Item, 2L)
-        savedItem?.getName()?.substring(0, 3) == 'apple'
+        def savedItem = em.find(Item, 1L)
+        savedItem?.getName() == 'apple'
     }
 
 }

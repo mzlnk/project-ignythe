@@ -4,16 +4,16 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class BasketControllerModule {
+class BasketControllerModule {
 
     @Bean
-    public BasketMapper basketMapper() {
+    BasketMapper basketMapper() {
         return new BasketMapper();
     }
 
     @Bean
-    public BasketItemMappper basketItemMappper() {
-        return new BasketItemMappper();
+    BasketItemMapper basketItemMapper() {
+        return new BasketItemMapper();
     }
 
 }

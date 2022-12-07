@@ -8,7 +8,7 @@ import java.util.Set;
 
 @Entity
 @Getter
-@Setter
+@Setter(AccessLevel.PACKAGE)
 @Builder
 @Table(name = "BASKETS")
 @NoArgsConstructor

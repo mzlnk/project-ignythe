@@ -5,10 +5,10 @@ import org.springframework.context.annotation.Configuration;
 import project.ignythe.shopservice.domain.item.ItemStorage;
 
 @Configuration
-public class BasketModule {
+class BasketModule {
 
     @Bean
-    public BasketStorage basketStorage(BasketRepository basketRepository,
+    BasketStorage basketStorage(BasketRepository basketRepository,
                                        BasketItemRepository basketItemRepository,
                                        ItemStorage itemStorage) {
         return new BasketStorage(basketRepository, basketItemRepository, itemStorage);

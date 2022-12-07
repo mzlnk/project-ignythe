@@ -12,25 +12,23 @@ import org.springframework.web.bind.annotation.*;
 import project.ignythe.shopservice.api.error.ErrorResponse;
 import project.ignythe.shopservice.domain.basket.BasketStorage;
 
-import java.util.Collection;
-
 @RestController
 @RequestMapping("/baskets")
-public class BasketController {
+class BasketController {
 
     private final BasketStorage basketStorage;
     private final BasketMapper basketMapper;
-    private final BasketItemMappper basketItemMappper;
 
-    public BasketController(BasketStorage basketStorage, BasketMapper basketMapper, BasketItemMappper basketItemMappper) {
+    BasketController(BasketStorage basketStorage, BasketMapper basketMapper) {
         this.basketStorage = basketStorage;
         this.basketMapper = basketMapper;
-        this.basketItemMappper = basketItemMappper;
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<BasketResponse> get(@PathVariable Long id) {
-        var basket = basketStorage.getById(id);
+    @GetMapping("/{basketId}")
+    ResponseEntity<BasketResponse> get(@PathVariable Long basketId) {
+        var getDetails = basketMapper.toBasketGetDetails(basketId);
+        var basket = basketStorage.getBasketById(getDetails);
+
         return ResponseEntity.ok(basketMapper.toBasketResponse(basket));
     }
 
@@ -50,26 +48,11 @@ public class BasketController {
             ),
     })
     @PostMapping
-    public ResponseEntity<BasketResponse> create(@RequestBody BasketCreateRequest createRequest) {
-        var createdBasket = basketStorage.createBasket(createRequest);
+    ResponseEntity<BasketResponse> create(@RequestBody BasketCreateRequest createRequest) {
+        var createDetails = basketMapper.toBasketCreateDetails(createRequest);
+        var createdBasket = basketStorage.createBasket(createDetails);
+
         return new ResponseEntity<>(basketMapper.toBasketResponse(createdBasket), HttpStatus.CREATED);
-    }
-
-    @GetMapping("/{id}/items")
-    public ResponseEntity<Collection<BasketItemResponse>> listItems(@PathVariable Long id) {
-        var items = basketStorage.getById(id).getBasketItems()
-                .stream()
-                .map(basketItemMappper::toBasketItemResponse)
-                .toList();
-
-        return ResponseEntity.ok(items);
-    }
-
-    @PostMapping("/{id}/items")
-    public ResponseEntity<BasketItemResponse> createItem(@PathVariable(name = "id") Long basketId,
-                                                         @RequestBody BasketItemCreateRequest createRequest) {
-        var createdItem = basketStorage.createBasketItem(basketId, createRequest);
-        return new ResponseEntity<>(basketItemMappper.toBasketItemResponse(createdItem), HttpStatus.CREATED);
     }
 
 }
