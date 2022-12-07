@@ -4,11 +4,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class ItemModule {
+class ItemModule {
 
     @Bean
-    public ItemService itemService(ItemRepository itemRepository) {
-        return new ItemService(itemRepository);
+    ItemStorage itemService(ItemRepository itemRepository) {
+        return new ItemStorage(itemRepository);
     }
 
 }

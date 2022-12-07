@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Entity
 @Getter
-@Setter
+@Setter(AccessLevel.PACKAGE)
 @Builder
 @Table(name = "BASKET_ITEMS")
 @NoArgsConstructor
@@ -23,5 +23,8 @@ public class BasketItem {
 
     @ManyToOne
     private Basket basket;
+
+    @Column(name = "AMOUNT")
+    private Long amount;
 
 }

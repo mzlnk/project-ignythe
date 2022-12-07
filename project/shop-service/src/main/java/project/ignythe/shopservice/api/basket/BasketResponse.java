@@ -10,7 +10,8 @@ public record BasketResponse(@Schema(description = "Basket identifier", example 
                              List<BasketItemDetails> items) {
 
     public record BasketItemDetails(String name,
-                                    String description) {
+                                    String description,
+                                    Long amount) {
     }
 
 }
