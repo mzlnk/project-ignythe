@@ -1,14 +1,12 @@
 package project.ignythe.shopservice.domain.item;
 
-import project.ignythe.shopservice.api.item.ItemCreateRequest;
-
 import java.util.List;
 
-public class ItemService {
+public class ItemStorage {
 
     private final ItemRepository itemRepository;
 
-    public ItemService(ItemRepository itemRepository) {
+    ItemStorage(ItemRepository itemRepository) {
         this.itemRepository = itemRepository;
     }
 
@@ -21,19 +19,15 @@ public class ItemService {
                 .orElseThrow(() -> new ItemNotFoundException(id));
     }
 
-    public Item create(ItemCreateRequest createRequest) {
+    public Item create(ItemCreateDetails createDetails) {
         Item item = Item.builder()
-                .name(createRequest.name())
-                .description(createRequest.description())
-                .unitPrice(createRequest.unitPrice())
-                .unitType(createRequest.unitType())
+                .name(createDetails.name())
+                .description(createDetails.description())
+                .unitPrice(createDetails.unitPrice())
+                .unitType(createDetails.unitType())
                 .build();
 
         return itemRepository.save(item);
-    }
-
-    public void deleteById(Long id) {
-        itemRepository.deleteById(id);
     }
 
 }
