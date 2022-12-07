@@ -30,7 +30,8 @@ class BasketMapper {
     private BasketItemDetails toBasketItemDetails(BasketItem basketItem) {
         return new BasketItemDetails(
                 basketItem.getItem().getName(),
-                basketItem.getItem().getDescription()
+                basketItem.getItem().getDescription(),
+                basketItem.getAmount()
         );
     }
 

@@ -24,4 +24,7 @@ public class BasketItem {
     @ManyToOne
     private Basket basket;
 
+    @Column(name = "AMOUNT")
+    private Long amount;
+
 }

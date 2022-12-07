@@ -10,6 +10,7 @@ import project.ignythe.shopservice.domain.basket.Basket
 import project.ignythe.shopservice.domain.basket.BasketNotFoundException
 import project.ignythe.shopservice.domain.basket.BasketStorage
 import project.ignythe.shopservice.domain.item.ItemStorage
+import project.ignythe.shopservice.domain.order.OrderStorage
 import spock.lang.Specification
 
 import static org.mockito.Mockito.when
@@ -28,6 +29,9 @@ class BasketControllerIT extends Specification {
 
     @MockBean
     ItemStorage itemService
+
+    @MockBean
+    OrderStorage orderStorage
 
     private BasketControllerFixture fixture
 

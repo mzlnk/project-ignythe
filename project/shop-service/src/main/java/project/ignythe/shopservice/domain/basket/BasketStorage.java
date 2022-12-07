@@ -58,6 +58,7 @@ public class BasketStorage {
         var basketItem = BasketItem.builder()
                 .item(item)
                 .basket(basket)
+                .amount(createDetails.amount())
                 .build();
 
         return basketItemRepository.save(basketItem);

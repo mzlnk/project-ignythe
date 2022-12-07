@@ -9,7 +9,8 @@ public class BasketItemMapper {
         return new BasketItemResponse(
                 basketItem.getId(),
                 item.getName(),
-                item.getDescription()
+                item.getDescription(),
+                basketItem.getAmount()
         );
     }
 

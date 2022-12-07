@@ -45,7 +45,7 @@ class BasketItemController {
     @PostMapping
     ResponseEntity<BasketItemResponse> create(@PathVariable Long basketId,
                                               @RequestBody BasketItemCreateRequest createRequest) {
-        var createDetails = new BasketItemCreateDetails(basketId, createRequest.itemId());
+        var createDetails = new BasketItemCreateDetails(basketId, createRequest.itemId(), createRequest.amount());
         var createdItem = basketStorage.createBasketItem(createDetails);
 
         return new ResponseEntity<>(basketItemMapper.toBasketItemResponse(createdItem), CREATED);

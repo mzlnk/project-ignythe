@@ -8,7 +8,7 @@ public interface BasketItemOperations {
     record BasketItemGetDetails(Long basketId, Long basketItemId) {
     }
 
-    record BasketItemCreateDetails(Long basketId, Long itemId) {
+    record BasketItemCreateDetails(Long basketId, Long itemId, Long amount) {
     }
 
     record BasketItemDeleteDetails(Long basketId, Long basketItemId) {
