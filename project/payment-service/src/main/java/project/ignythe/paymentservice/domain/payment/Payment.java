@@ -4,6 +4,8 @@ import lombok.*;
 
 import javax.persistence.*;
 
+import java.math.BigDecimal;
+
 import static lombok.AccessLevel.PACKAGE;
 
 @Entity
@@ -21,6 +23,12 @@ public class Payment {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @SequenceGenerator(name = SEQUENCE, sequenceName = SEQUENCE, initialValue = 1)
     private Long id;
+
+    @Column(name = "DESCRIPTION")
+    private String description;
+
+    @Column(name = "AMOUNT")
+    private BigDecimal amount;
 
     @Column(name = "STATUS")
     @Enumerated(EnumType.STRING)

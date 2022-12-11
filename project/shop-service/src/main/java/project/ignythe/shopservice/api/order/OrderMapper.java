@@ -28,6 +28,7 @@ class OrderMapper {
         return new OrderResponse(
                 order.getId(),
                 order.getOrderStatus(),
+                order.getPaymentId(),
                 totalAmount,
                 items
         );

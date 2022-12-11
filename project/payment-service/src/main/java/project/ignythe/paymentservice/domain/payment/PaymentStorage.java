@@ -16,8 +16,10 @@ public class PaymentStorage {
                 .orElseThrow(paymentNotFound(getDetails.paymentId()));
     }
 
-    public Payment create() {
+    public Payment create(PaymentCreateDetails createDetails) {
         var newPayment = Payment.builder()
+                .description(createDetails.description())
+                .amount(createDetails.amount())
                 .status(PaymentStatus.PENDING)
                 .build();
 

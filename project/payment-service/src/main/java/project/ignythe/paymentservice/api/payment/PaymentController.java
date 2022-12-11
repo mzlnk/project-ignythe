@@ -30,8 +30,10 @@ class PaymentController {
     }
 
     @PostMapping
-    ResponseEntity<PaymentResponse> create() {
-        var createdPayment = paymentStorage.create();
+    ResponseEntity<PaymentResponse> create(@RequestBody PaymentCreateRequest createRequest) {
+        var createDetails = new PaymentCreateDetails(createRequest.description(), createRequest.amount());
+        var createdPayment = paymentStorage.create(createDetails);
+
         return new ResponseEntity<>(paymentMapper.toPaymentResponse(createdPayment), CREATED);
     }
 

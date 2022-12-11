@@ -6,7 +6,5 @@ spring:
   h2:
     console:
       enabled: true
-
-payment:
-  type: service
-  host: 'http://localhost:8081'
+server:
+  port: 8081

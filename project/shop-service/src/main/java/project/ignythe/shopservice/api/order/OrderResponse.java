@@ -7,15 +7,16 @@ import java.math.BigDecimal;
 import java.util.List;
 
 record OrderResponse(Long orderId,
-                            OrderStatus status,
-                            BigDecimal totalAmount,
-                            List<OrderItemDetails> items) {
+                     OrderStatus status,
+                     Long paymentId,
+                     BigDecimal totalAmount,
+                     List<OrderItemDetails> items) {
 
     record OrderItemDetails(String name,
-                                   String description,
-                                   BigDecimal unitPrice,
-                                   UnitType unitType,
-                                   Long amount) {
+                            String description,
+                            BigDecimal unitPrice,
+                            UnitType unitType,
+                            Long amount) {
 
     }
 

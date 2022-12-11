@@ -28,6 +28,9 @@ public class Order {
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
 
+    @Column(name = "PAYMENT_ID")
+    private Long paymentId;
+
     @OneToMany(mappedBy = "order")
     @Builder.Default
     private Set<OrderItem> orderItems = new HashSet<>();
