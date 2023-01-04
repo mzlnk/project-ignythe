@@ -1,5 +1,7 @@
 package project.ignythe.paymentservice.api.payment;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import project.ignythe.paymentservice.domain.payment.PaymentOperations;
@@ -12,6 +14,8 @@ import static project.ignythe.paymentservice.domain.payment.PaymentOperations.Pa
 @RestController
 @RequestMapping("/payments")
 class PaymentController {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(PaymentController.class);
 
     private final PaymentStorage paymentStorage;
     private final PaymentMapper paymentMapper;
@@ -31,6 +35,7 @@ class PaymentController {
 
     @PostMapping
     ResponseEntity<PaymentResponse> create(@RequestBody PaymentCreateRequest createRequest) {
+        LOGGER.info("Create payment");
         var createDetails = new PaymentCreateDetails(createRequest.description(), createRequest.amount());
         var createdPayment = paymentStorage.create(createDetails);
 

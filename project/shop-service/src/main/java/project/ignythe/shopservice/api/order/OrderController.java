@@ -1,5 +1,7 @@
 package project.ignythe.shopservice.api.order;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import project.ignythe.shopservice.domain.order.OrderStorage;
@@ -11,6 +13,8 @@ import static project.ignythe.shopservice.domain.order.OrderOperations.OrderGetD
 @RestController
 @RequestMapping("/orders")
 class OrderController {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(OrderController.class);
 
     private final OrderStorage orderStorage;
     private final OrderMapper orderMapper;
@@ -30,6 +34,7 @@ class OrderController {
 
     @PostMapping
     ResponseEntity<OrderResponse> create(@RequestBody OrderCreateRequest createRequest) {
+        LOGGER.info("Create order");
         var createDetails = new OrderCreateDetails(createRequest.basketId());
 
         var createdOrder = orderStorage.create(createDetails);

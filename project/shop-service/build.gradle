@@ -28,6 +28,10 @@ configurations {
     integrationTestImplementation.extendsFrom implementation
     integrationTestImplementation.extendsFrom testImplementation
     integrationTestRuntimeOnly.extendsFrom testRuntimeOnly
+
+    all {
+        exclude group: "org.springframework.boot", module: "spring-boot-starter-logging"
+    }
 }
 
 dependencies {
@@ -38,6 +42,17 @@ dependencies {
     implementation 'org.springdoc:springdoc-openapi-ui:1.6.13'
 
     implementation 'org.springframework.boot:spring-boot-starter-validation:2.7.5'
+
+    // OpenFeign
+    implementation(platform('org.springframework.cloud:spring-cloud-dependencies:2021.0.5'))
+    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign:3.1.5'
+    implementation 'io.github.openfeign:feign-httpclient:12.1'
+
+    // Logging
+    implementation "org.springframework.boot:spring-boot-starter-log4j2"
+
+    // Vavr
+    implementation 'io.vavr:vavr:0.10.4'
 
     // Spock
     implementation platform('org.apache.groovy:groovy-bom:4.0.5')
