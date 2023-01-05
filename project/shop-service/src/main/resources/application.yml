@@ -1,3 +1,9 @@
 payment:
   type: service
   host: http://localhost:8081
+
+security:
+  jwt:
+    token:
+      issuer: "dupa123"
+      public-key: "secrets/test-key.key.pub"
